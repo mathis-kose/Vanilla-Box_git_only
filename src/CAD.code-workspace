@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "../../../../CAD"
+		},
+		{
+			"path": "../../../../Cursor_Code_Ai_Help"
+		},
+		{
+			"name": "ESP32_X_Cursor",
+			"path": ".."
+		}
+	]
+}
