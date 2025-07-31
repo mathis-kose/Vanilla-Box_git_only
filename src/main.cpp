@@ -207,7 +207,7 @@ unsigned long lastCO2Update = 0;
 // Lichtsteuerung
 const int LED_PWM = 16; // GPIO 16
 double Setpoint, inputVal, outputVal;
-double Kp = 0.29, Ki = 0.009, Kd = 0;
+double Kp = 0.0029, Ki = 0.009, Kd = 0;
 PID light_pid(&inputVal, &outputVal, &Setpoint, Kp, Ki, Kd, DIRECT);
 
 // PID-Parameter Grenzen
@@ -319,7 +319,7 @@ int co2ValueIndex = 0;
 uint16_t co2_raw = 0;
 
 // Lichtsteuerung
-float maxLightIntensity = 350.0f;
+float maxLightIntensity = 2000.0f;
 float lastEstimatedTimeToSetpoint = 0.0f; // Wird aktuell nicht verwendet?
 
 // Maps zur Verfolgung der Mutex-Nutzung (EINMALIGE DEKLARATION HIER)
@@ -1292,7 +1292,7 @@ float getMedianCO2() {
 }
 
 void Licht_Regeln(void *pvParameters) {
-    const TickType_t xDelay = pdMS_TO_TICKS(100); // Häufigere Prüfung für sanftere Übergänge, war 5ms
+    const TickType_t xDelay = pdMS_TO_TICKS(10); // Häufigere Prüfung für sanftere Übergänge, war 5ms
     const float SUNSET_LUX_THRESHOLD = 5.0f; // Niedrigerer Threshold für Abschaltung
 
     for (;;) {
